@@ -39,8 +39,6 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) => {
         const loginUser = await getItem('isLoginUser');
         if (registerUser == true && loginUser == true) {
             navigation.navigate('Home');
-        } else if (registerUser == true) {
-            navigation.navigate('Login');
         }
     };
 
