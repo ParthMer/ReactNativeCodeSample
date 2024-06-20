@@ -6,6 +6,8 @@ import CustomTextInput from '../../components/CustomTextInput';
 import CustomButton from '../../components/CustomButton';
 import { setItem, showToast } from '../../common/helper';
 import Toast from 'react-native-toast-message';
+import { useDispatch, useSelector } from 'react-redux';
+import { getDataWatcher } from '../../store/action';
 
 const API_URL = 'https://jsonplaceholder.typicode.com/users';
 
@@ -19,6 +21,10 @@ const Home = ({ navigation }: { navigation: any }) => {
         email: ''
     });
 
+//     const dispatch = useDispatch();
+//   const {getData} = useSelector((state: any) => ({
+//     getData: state.getDataReducer.getData,
+//   }));
     useEffect(() => {
         const fetchUsers = async () => {
             try {
@@ -61,8 +67,7 @@ const Home = ({ navigation }: { navigation: any }) => {
                 showToast('success', 'Add Item Successfully');
             } else {
                 const updatedData = {
-                    ...isEditData,
-                    ...addData
+                    ...isEditData
                 };
                 const indexToUpdate = arr.findIndex(item => item.id === updatedData.id);
                 if (indexToUpdate !== -1) {
@@ -168,6 +173,7 @@ const Home = ({ navigation }: { navigation: any }) => {
                             name: ''
                         });
                     }
+                    // dispatch(getDataWatcher())
                 }}
             >
                 <Image source={Images.add} style={styles.add} />
@@ -176,7 +182,8 @@ const Home = ({ navigation }: { navigation: any }) => {
                 <TouchableOpacity onPress={() => {
                     setIsEdit(false);
                     setIsOpenModal(false);
-                }} style={{ backgroundColor: Colors.transparrent, flex: 1, justifyContent: 'center' }}>
+                }
+                    } style={{ backgroundColor: Colors.transparrent, flex: 1, justifyContent: 'center' }}>
                     <View style={{ backgroundColor: Colors.white, marginHorizontal: 20, padding: 20, borderRadius: 10 }}>
                         <CustomTextInput
                             placeholder={'Enter Your Email'}

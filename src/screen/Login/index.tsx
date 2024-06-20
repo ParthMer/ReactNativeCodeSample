@@ -98,6 +98,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
                             value={loginData.password}
                             onPress={() => setHideShowPass(!hideShowPass)}
                             icon={loginData.password?.length > 0 ? (hideShowPass ? Images.show : Images.hide) : ''}
+                            iconStyle={{top:47}}
                             secureTextEntry={!hideShowPass}
                             error={errors.password}
                         />

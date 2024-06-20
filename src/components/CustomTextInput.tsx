@@ -10,6 +10,7 @@ interface TextInputProps {
   label?: string;
   error?: string;
   inputStyle?: object;
+  iconStyle?: object;
   secureTextEntry?: boolean;
   icon?: any;
 }
@@ -25,6 +26,7 @@ const CustomTextInput: React.FC<TextInputProps> = ({
   onPress,
   secureTextEntry,
   icon,
+  iconStyle,
 }) => {
   return (
     <View style={styles.container}>
@@ -39,7 +41,7 @@ const CustomTextInput: React.FC<TextInputProps> = ({
         placeholderTextColor={'grey'}
       />
       {icon && (
-        <Pressable onPress={onPress} style={styles.iconContainer}>
+        <Pressable onPress={onPress} style={[[styles.iconContainer, iconStyle]]}>
           <Image source={icon} style={styles.icon} />
         </Pressable>
       )}
@@ -75,11 +77,9 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     position: 'absolute',
-    bottom: 17,
+    top: 27,
     right: 10,
-    backgroundColor: 'black',
     borderRadius: 20,
-    padding: 5,
   },
   icon: {
     height: 25,
