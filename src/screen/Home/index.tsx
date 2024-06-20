@@ -173,7 +173,10 @@ const Home = ({ navigation }: { navigation: any }) => {
                 <Image source={Images.add} style={styles.add} />
             </TouchableOpacity>
             <Modal visible={isOpenModal} transparent={true}>
-                <TouchableOpacity onPress={() => setIsOpenModal(false)} style={{ backgroundColor: Colors.transparrent, flex: 1, justifyContent: 'center' }}>
+                <TouchableOpacity onPress={() => {
+                    setIsEdit(false);
+                    setIsOpenModal(false);
+                }} style={{ backgroundColor: Colors.transparrent, flex: 1, justifyContent: 'center' }}>
                     <View style={{ backgroundColor: Colors.white, marginHorizontal: 20, padding: 20, borderRadius: 10 }}>
                         <CustomTextInput
                             placeholder={'Enter Your Email'}
